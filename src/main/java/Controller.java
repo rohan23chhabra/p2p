@@ -2,7 +2,7 @@ import background.ListenThread;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import core.User;
+import core.Peer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,7 +23,7 @@ public class Controller implements Initializable {
     public JFXTextField usernameField;
     public JFXPasswordField passwordField;
 
-    private User user;
+    private Peer peer;
     public static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
 
 
@@ -38,9 +38,9 @@ public class Controller implements Initializable {
         String password = passwordField.getText();
         Stage primaryStage = (Stage) connectButton.getParent().getScene().getWindow();
         primaryStage.setTitle("Welcome - " + username);
-        User user = new User(username, password, userPort);
-        this.user = user;
-        Thread listenThread = new ListenThread(user);
+        Peer peer = new Peer(username, password, userPort);
+        this.peer = peer;
+        Thread listenThread = new ListenThread(peer);
         listenThread.start();
         LOGGER.log(Level.INFO, "Listening thread started.");
         loadConnectController();
@@ -48,8 +48,8 @@ public class Controller implements Initializable {
 
     private void loadConnectController() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("connect.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Connect to another peer - " + user.getUsername());
+        Stage stage = Main.getPrimaryStage();
+        stage.setTitle("Connect to another peer - " + peer.getUsername());
         stage.setScene(new Scene(root, 700, 575));
         stage.show();
     }

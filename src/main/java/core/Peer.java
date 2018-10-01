@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class Peer {
     public List<Socket> socketList;
     public ServerSocket serverSocket;
     public int port;
@@ -14,12 +14,12 @@ public class User {
     private String username;
     private String password;
 
-    public User(String username, String password) {
+    public Peer(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public User(String username, String password, int port) {
+    public Peer(String username, String password, int port) {
         this(username, password);
         this.port = port;
         socketList = new ArrayList<Socket>();
