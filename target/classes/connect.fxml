@@ -5,15 +5,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConnectController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConnectController">
     <children>
-        <JFXButton onAction="#connectOnAction" fx:id="connectButton" buttonType="RAISED" layoutX="250.0" layoutY="191.0"
-                   text="CONNECT"/>
-        <Label layoutX="104.0" layoutY="62.0" text="Enter IP Address"/>
-        <Label layoutX="104.0" layoutY="110.0" text="Enter port"/>
-        <JFXTextField fx:id="ipField" layoutX="332.0" layoutY="57.0"/>
-        <JFXTextField fx:id="portField" layoutX="332.0" layoutY="105.0"/>
+        <JFXButton fx:id="connectButton" buttonType="RAISED" layoutX="250.0" layoutY="191.0" onAction="#connectOnAction" text="CONNECT" />
+        <Label layoutX="104.0" layoutY="62.0" text="Enter IP Address" />
+        <Label layoutX="104.0" layoutY="110.0" text="Enter port" />
+        <JFXTextField fx:id="ipField" layoutX="332.0" layoutY="57.0" />
+        <JFXTextField fx:id="portField" layoutX="332.0" layoutY="105.0" />
+      <Label layoutX="119.0" layoutY="286.0" text="Your port" />
+      <Label fx:id="thisPort" layoutX="392.0" layoutY="286.0" prefHeight="16.0" prefWidth="41.0" text="port" />
     </children>
 </AnchorPane>
