@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+    <children>
+
+        <TextField fx:id="inputIPAddress" layoutX="212.0" layoutY="200.0" />
+        <Label fx:id="enterText" layoutX="213.0" layoutY="251.0" text="Enter IP address to connect" />
+      <JFXButton layoutX="267.0" layoutY="302.0" text="Connect" />
+    </children>
+</AnchorPane>
