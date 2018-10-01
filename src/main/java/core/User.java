@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private List<Socket> socketList;
-    private ServerSocket serverSocket;
-    private int port;
+    public List<Socket> socketList;
+    public ServerSocket serverSocket;
+    public int port;
 
     private String username;
     private String password;
@@ -28,6 +28,22 @@ public class User {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public boolean connect(String ipaddress, int port) {
