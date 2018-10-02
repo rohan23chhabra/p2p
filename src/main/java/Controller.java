@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import core.Peer;
 import file.FileUtils;
+import file.SharedDirectory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -73,6 +74,7 @@ public class Controller {
         if (dir == null || !dir.isDirectory()) {
             FileUtils.actionOnNullDirectory();
         } else {
+            SharedDirectory.setDirectory(dir);
             fileTreeView.setRoot(FileUtils.getNodesForDirectory(dir));
             setFileDisplayLayout();
         }
