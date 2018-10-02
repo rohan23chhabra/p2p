@@ -45,14 +45,4 @@ public class Peer {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public boolean connect(String ipaddress, int port) {
-        return false;
-    }
-
-    public void listen() {
-
-    }
-
-
 }

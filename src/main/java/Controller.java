@@ -5,15 +5,15 @@ import com.jfoenix.controls.JFXTextField;
 import core.Peer;
 import file.FileUtils;
 import file.SharedDirectory;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -76,8 +76,19 @@ public class Controller {
         } else {
             SharedDirectory.setDirectory(dir);
             fileTreeView.setRoot(FileUtils.getNodesForDirectory(dir));
+            setChangeListener(fileTreeView);
             setFileDisplayLayout();
         }
+    }
+
+    private void setChangeListener(TreeView<File> fileTreeView) {
+        fileTreeView.getSelectionModel().selectedItemProperty().addListener(
+                new ChangeListener<TreeItem<File>>() {
+                    public void changed(ObservableValue<? extends TreeItem<File>> observable, TreeItem<File> oldValue, TreeItem<File> newValue) {
+
+                    }
+                }
+        );
     }
 
     private void setFileDisplayLayout() {
@@ -89,4 +100,6 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
+
+
 }

@@ -14,7 +14,5 @@
         <JFXTextField fx:id="portField" layoutX="332.0" layoutY="105.0" />
       <Label layoutX="119.0" layoutY="286.0" text="Your port" />
       <Label fx:id="thisPort" layoutX="392.0" layoutY="286.0" prefHeight="16.0" prefWidth="41.0" text="port" />
-      <Label layoutX="98.0" layoutY="329.0" text="Your IP Address" />
-      <Label fx:id="thisIP" layoutX="392.0" layoutY="329.0" prefHeight="16.0" prefWidth="41.0" text="ip" />
     </children>
 </AnchorPane>

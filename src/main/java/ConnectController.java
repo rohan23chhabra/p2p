@@ -2,6 +2,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+import javafx.scene.control.TreeView;
+import net.Session;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -18,13 +20,15 @@ public class ConnectController {
     private String ip;
     private String port;
 
+    private TreeView<String> treeView = new TreeView<String>();
+
 
     public void connectOnAction(ActionEvent actionEvent) throws IOException {
         String ip = ipField.getText();
         int port = Integer.parseInt(portField.getText());
-        Socket socket = new Socket(ip, port);
+        Socket clientSocket = new Socket(ip, port);
         LOGGER.log(Level.INFO, "Trying to establish.");
-
+        Session session = new Session(clientSocket);
     }
 
     public void setIp(String ip) {
