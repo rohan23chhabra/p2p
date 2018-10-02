@@ -58,7 +58,6 @@ public class Controller {
         Parent root = fxmlLoader.load();
 
         ConnectController connectController = fxmlLoader.getController();
-        connectController.setIp("localhost");
         connectController.setPort(portField.getText());
         connectController.setNetworkLabels();
 

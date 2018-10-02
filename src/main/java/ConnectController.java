@@ -17,10 +17,11 @@ public class ConnectController {
     public static final Logger LOGGER = Logger.getLogger(ConnectController.class.getName());
     public Label thisPort;
 
-    private String ip;
     private String port;
 
     private TreeView<String> treeView = new TreeView<String>();
+
+    public static final String CONNECTION_STRING = "Send shared file data";
 
 
     public void connectOnAction(ActionEvent actionEvent) throws IOException {
@@ -29,10 +30,8 @@ public class ConnectController {
         Socket clientSocket = new Socket(ip, port);
         LOGGER.log(Level.INFO, "Trying to establish.");
         Session session = new Session(clientSocket);
-    }
+        session.communicate(CONNECTION_STRING);
 
-    public void setIp(String ip) {
-        this.ip = ip;
     }
 
     public void setPort(String port) {
