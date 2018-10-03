@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import core.Peer;
 import file.FileUtils;
-import file.SharedDirectory;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -13,8 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import ui.UIUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,20 +29,28 @@ public class Controller {
     public JFXButton chooseButton;
 
     private Peer peer;
-    public static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
+
+    private File sharedDirectory;
+
+    public static final Logger LOGGER =
+            Logger.getLogger(Controller.class.getName());
 
     private TreeView<File> fileTreeView = new TreeView<File>();
 
-    public void loginOnAction(ActionEvent actionEvent) throws IOException {
+    public void loginOnAction(ActionEvent actionEvent)
+            throws IOException {
         int userPort = Integer.parseInt(portField.getText());
-        String username = usernameField.getText();
 
+        String username = usernameField.getText();
         String password = passwordField.getText();
-        Stage primaryStage = (Stage) connectButton.getParent().getScene().getWindow();
+
+        Stage primaryStage =
+                (Stage) connectButton.getParent().getScene()
+                        .getWindow();
         primaryStage.setTitle("Welcome - " + username);
 
-        Peer peer = new Peer(username, password, userPort);
-        this.peer = peer;
+        this.peer = new Peer(username, password, userPort);
+        peer.setDirectory(sharedDirectory);
 
         Thread listenThread = new ListenThread(peer);
         listenThread.start();
@@ -54,15 +61,18 @@ public class Controller {
     }
 
     private void loadConnectController() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("connect.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(
+                getClass().getResource("connect.fxml"));
         Parent root = fxmlLoader.load();
 
-        ConnectController connectController = fxmlLoader.getController();
+        ConnectController connectController =
+                fxmlLoader.getController();
         connectController.setPort(portField.getText());
         connectController.setNetworkLabels();
 
         Stage stage = Main.getPrimaryStage();
-        stage.setTitle("Connect to another peer - " + peer.getUsername());
+        stage.setTitle(
+                "Connect to another peer - " + peer.getUsername());
         stage.setScene(new Scene(root, 700, 575));
         stage.show();
     }
@@ -73,7 +83,7 @@ public class Controller {
         if (dir == null || !dir.isDirectory()) {
             FileUtils.actionOnNullDirectory();
         } else {
-            SharedDirectory.setDirectory(dir);
+            this.sharedDirectory = dir;
             fileTreeView.setRoot(FileUtils.getNodesForDirectory(dir));
             setChangeListener(fileTreeView);
             setFileDisplayLayout();
@@ -81,23 +91,23 @@ public class Controller {
     }
 
     private void setChangeListener(TreeView<File> fileTreeView) {
-        fileTreeView.getSelectionModel().selectedItemProperty().addListener(
-                new ChangeListener<TreeItem<File>>() {
-                    public void changed(ObservableValue<? extends TreeItem<File>> observable, TreeItem<File> oldValue, TreeItem<File> newValue) {
+        fileTreeView.getSelectionModel().selectedItemProperty()
+                .addListener(
+                        new ChangeListener<TreeItem<File>>() {
+                            public void changed(
+                                    ObservableValue<? extends
+                                            TreeItem<File>>
+                                            observable,
+                                    TreeItem<File> oldValue,
+                                    TreeItem<File> newValue) {
 
-                    }
-                }
-        );
+                            }
+                        }
+                );
     }
 
     private void setFileDisplayLayout() {
-        Stage stage = new Stage();
-        BorderPane borderPane = new BorderPane();
-        borderPane.setCenter(fileTreeView);
-        Scene scene = new Scene(borderPane, 650, 550);
-        stage.setTitle("Shared files.");
-        stage.setScene(scene);
-        stage.show();
+        UIUtils.displayTreeView(fileTreeView, "Shared files.");
     }
 
 
