@@ -7,11 +7,13 @@ import file.FileUtils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import ui.UIUtils;
 
@@ -85,25 +87,9 @@ public class Controller {
         } else {
             this.sharedDirectory = dir;
             fileTreeView.setRoot(FileUtils.getNodesForDirectory(dir));
-            setChangeListener(fileTreeView);
+            //treeViewOnClickListener(fileTreeView);
             setFileDisplayLayout();
         }
-    }
-
-    private void setChangeListener(TreeView<File> fileTreeView) {
-        fileTreeView.getSelectionModel().selectedItemProperty()
-                .addListener(
-                        new ChangeListener<TreeItem<File>>() {
-                            public void changed(
-                                    ObservableValue<? extends
-                                            TreeItem<File>>
-                                            observable,
-                                    TreeItem<File> oldValue,
-                                    TreeItem<File> newValue) {
-
-                            }
-                        }
-                );
     }
 
     private void setFileDisplayLayout() {

@@ -19,8 +19,8 @@
         <module name="p2p" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="p2p" target="1.5" />
+    <bytecodeTargetLevel target="8">
+      <module name="p2p" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

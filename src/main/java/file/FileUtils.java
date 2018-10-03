@@ -5,18 +5,21 @@ import javafx.scene.control.TreeItem;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FileUtils {
 
-    public static final Logger LOGGER = Logger.getLogger(FileUtils.class.getName());
+    public static final Logger LOGGER =
+            Logger.getLogger(FileUtils.class.getName());
 
     public static File chooseDirectory(Stage stage) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle("Select folder to share with other peers");
-        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        directoryChooser
+                .setTitle("Select folder to share with other peers");
+        directoryChooser.setInitialDirectory(
+                new File(System.getProperty("user.home")));
 
         File dir = directoryChooser.showDialog(stage);
         return dir;
@@ -40,5 +43,27 @@ public class FileUtils {
         alert.setHeaderText("Could not open directory");
         alert.setContentText("The file is invalid.");
         alert.showAndWait();
+    }
+
+    public static void storeFileOnDisk(File remoteFile, String
+            path) throws IOException {
+        String name = remoteFile.getName();
+        path = path + "/" + name;
+        File file = new File(path);
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+        try {
+            inputStream = new FileInputStream(remoteFile);
+            outputStream = new FileOutputStream(file);
+            byte[] buffer = new byte[1024];
+            int length;
+
+            while ((length = inputStream.read()) > 0) {
+                outputStream.write(buffer, 0, length);
+            }
+        } finally {
+            inputStream.close();
+            outputStream.close();
+        }
     }
 }

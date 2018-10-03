@@ -2,8 +2,11 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import file.FileUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.input.MouseEvent;
 import net.Session;
 import ui.UIUtils;
 
@@ -28,6 +31,8 @@ public class ConnectController {
     public static final String CONNECTION_STRING =
             "Send shared file data";
 
+    public static final String FILE_DOWNLOAD_PATH =
+            "/home/rohan/Desktop";
 
     public void connectOnAction(ActionEvent actionEvent)
             throws IOException {
@@ -55,9 +60,35 @@ public class ConnectController {
     }
 
     private void displayOtherSharedDirectories(File directory) {
-        TreeView<File> treeView = new TreeView<File>();
-        treeView.setRoot(FileUtils.getNodesForDirectory(directory));
-        UIUtils.displayTreeView(treeView, "Files shared by remote " +
-                "user.");
+        TreeView<File> fileTreeView = new TreeView<File>();
+        fileTreeView
+                .setRoot(FileUtils.getNodesForDirectory(directory));
+        setTreeViewOnClickListener(fileTreeView);
+        UIUtils.displayTreeView(fileTreeView,
+                "Files shared by remote " +
+                        "user.");
+    }
+
+    private void setTreeViewOnClickListener(
+            final TreeView<File> fileTreeView) {
+        fileTreeView.setOnMouseClicked(
+                new EventHandler<MouseEvent>() {
+                    public void handle(MouseEvent event) {
+                        if (event.getClickCount() == 2) {
+                            TreeItem<File> selectedItem =
+                                    fileTreeView.getSelectionModel
+                                            ().getSelectedItem();
+                            File fileToDownload = selectedItem
+                                    .getValue();
+                            try {
+                                FileUtils.storeFileOnDisk
+                                        (fileToDownload,
+                                                FILE_DOWNLOAD_PATH);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                });
     }
 }
