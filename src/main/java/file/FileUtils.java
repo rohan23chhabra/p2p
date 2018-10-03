@@ -32,7 +32,7 @@ public class FileUtils {
             if (f.isDirectory()) {
                 root.getChildren().add(getNodesForDirectory(f));
             } else {
-                root.getChildren().add(new TreeItem<File>(f));
+                root.getChildren().add(new TreeItem<>(f));
             }
         }
         return root;
