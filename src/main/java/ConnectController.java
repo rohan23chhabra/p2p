@@ -1,30 +1,43 @@
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.transitions.hamburger
+        .HamburgerBackArrowBasicTransition;
 import file.FileUtils;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.input.MouseEvent;
 import net.Session;
 import ui.UIUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ConnectController {
+public class ConnectController implements Initializable {
     public JFXButton connectButton;
     public JFXTextField ipField;
     public JFXTextField portField;
     public static final Logger LOGGER =
             Logger.getLogger(ConnectController.class.getName());
     public Label thisPort;
+    public JFXHamburger hamburger;
+    public JFXDrawer drawer;
 
     private String port;
 
     private TreeView<String> treeView = new TreeView<String>();
+
+    private HamburgerBackArrowBasicTransition
+            backArrowBasicTransition;
 
     public static final String CONNECTION_STRING =
             "Send shared file data";
@@ -88,5 +101,25 @@ public class ConnectController {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.backArrowBasicTransition
+                = new HamburgerBackArrowBasicTransition(hamburger);
+        backArrowBasicTransition.setRate(-1);
+        drawer.setContent();
+    }
+
+    public void hamburgerOnAction(MouseEvent mouseEvent) {
+        backArrowBasicTransition
+                .setRate(backArrowBasicTransition.getRate() * (-1.0));
+        backArrowBasicTransition.play();
+
+        if(drawer.isOpened()) {
+            drawer.close();
+        } else {
+            drawer.open();
+        }
     }
 }

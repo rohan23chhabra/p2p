@@ -18,3 +18,7 @@
     -fx-font-weight: bold;
     -fx-font-family: Roboto;
 }
+
+.jfx-hamburger StackPane{
+    -fx-background-color: black;
+}
