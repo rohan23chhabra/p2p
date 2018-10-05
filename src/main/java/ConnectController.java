@@ -4,7 +4,10 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger
         .HamburgerBackArrowBasicTransition;
+import com.jfoenix.transitions.hamburger
+        .HamburgerNextArrowBasicTransition;
 import core.Peer;
+import core.Scenes;
 import file.FileUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -34,6 +37,7 @@ public class ConnectController implements Initializable {
     public Label thisPort;
     public JFXHamburger hamburger;
     public JFXDrawer drawer;
+    public JFXHamburger backButtonHamburger;
 
     private String port;
 
@@ -43,6 +47,8 @@ public class ConnectController implements Initializable {
 
     private HamburgerBackArrowBasicTransition
             backArrowBasicTransition;
+
+    private HamburgerNextArrowBasicTransition backButton;
 
     public static final String CONNECTION_STRING =
             "Send shared file data";
@@ -114,6 +120,11 @@ public class ConnectController implements Initializable {
                 = new HamburgerBackArrowBasicTransition(hamburger);
         backArrowBasicTransition.setRate(-1);
 
+        this.backButton = new HamburgerNextArrowBasicTransition(
+                backButtonHamburger);
+        backButton.setRate(1);
+        backButton.play();
+
         try {
             FXMLLoader fxmlLoader =
                     new FXMLLoader(getClass().getResource
@@ -145,5 +156,10 @@ public class ConnectController implements Initializable {
 
     public void setPeer(Peer peer) {
         this.peer = peer;
+    }
+
+    public void backButtonOnAction(MouseEvent mouseEvent) {
+        Scenes.getScenes().pop();
+        Main.getPrimaryStage().setScene(Scenes.getScenes().peek());
     }
 }

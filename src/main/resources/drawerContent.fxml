@@ -15,6 +15,7 @@
             </image>
         </ImageView>
         <JFXButton fx:id="viewSession" buttonType="RAISED" mnemonicParsing="false" prefHeight="56.0" prefWidth="179.0"
+                   onAction="#viewSessionOnAction"
                    styleClass="button"
                    text="View Session"/>
         <JFXButton fx:id="sharedDirectory" buttonType="RAISED" mnemonicParsing="false" prefHeight="56.0"

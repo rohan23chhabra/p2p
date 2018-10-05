@@ -4,7 +4,7 @@ import javafx.scene.Scene;
 
 import java.util.Stack;
 
-public class SceneStack {
+public class Scenes {
     private static Stack<Scene> scenes = new Stack<Scene>();
 
     public static Stack<Scene> getScenes() {
@@ -12,6 +12,6 @@ public class SceneStack {
     }
 
     public static void setScenes(Stack<Scene> scenes) {
-        SceneStack.scenes = scenes;
+        Scenes.scenes = scenes;
     }
 }

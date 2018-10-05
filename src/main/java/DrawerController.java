@@ -1,5 +1,7 @@
 import com.jfoenix.controls.JFXButton;
 import core.Peer;
+import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 
 public class DrawerController {
 
@@ -16,5 +18,10 @@ public class DrawerController {
 
     public void setPeer(Peer peer) {
         this.peer = peer;
+    }
+
+    public void viewSessionOnAction(ActionEvent actionEvent) {
+        Stage stage = new Stage();
+        
     }
 }

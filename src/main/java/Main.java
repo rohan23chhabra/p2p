@@ -1,4 +1,4 @@
-import core.SceneStack;
+import core.Scenes;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +20,7 @@ public class Main extends Application {
         stage.setTitle("Hello World");
         Scene primaryScene = new Scene(root);
         stage.setScene(primaryScene);
-        SceneStack.getScenes().push(primaryScene);
+        Scenes.getScenes().push(primaryScene);
         //adjustPaneSize(root);
         stage.show();
     }
