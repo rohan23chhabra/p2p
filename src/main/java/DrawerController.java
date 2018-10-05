@@ -10,5 +10,11 @@ public class DrawerController {
 
     private Peer peer;
 
+    public Peer getPeer() {
+        return peer;
+    }
 
+    public void setPeer(Peer peer) {
+        this.peer = peer;
+    }
 }

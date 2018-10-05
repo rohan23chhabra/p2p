@@ -115,10 +115,17 @@ public class ConnectController implements Initializable {
         backArrowBasicTransition.setRate(-1);
 
         try {
-            VBox vBox = FXMLLoader.load(getClass().getResource
-                    ("drawerContent.fxml"));
+            FXMLLoader fxmlLoader =
+                    new FXMLLoader(getClass().getResource
+                            ("drawerContent.fxml"));
+            VBox vBox = fxmlLoader.load();
+            DrawerController drawerController = fxmlLoader
+                    .getController();
+            drawerController.setPeer(this.peer);
             drawer.setSidePane(vBox);
             drawer.close();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
