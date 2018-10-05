@@ -4,13 +4,16 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger
         .HamburgerBackArrowBasicTransition;
+import core.Peer;
 import file.FileUtils;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import net.Session;
 import ui.UIUtils;
 
@@ -33,6 +36,8 @@ public class ConnectController implements Initializable {
     public JFXDrawer drawer;
 
     private String port;
+
+    private Peer peer;
 
     private TreeView<String> treeView = new TreeView<String>();
 
@@ -108,7 +113,15 @@ public class ConnectController implements Initializable {
         this.backArrowBasicTransition
                 = new HamburgerBackArrowBasicTransition(hamburger);
         backArrowBasicTransition.setRate(-1);
-        drawer.setContent();
+
+        try {
+            VBox vBox = FXMLLoader.load(getClass().getResource
+                    ("drawerContent.fxml"));
+            drawer.setSidePane(vBox);
+            drawer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void hamburgerOnAction(MouseEvent mouseEvent) {
@@ -116,10 +129,14 @@ public class ConnectController implements Initializable {
                 .setRate(backArrowBasicTransition.getRate() * (-1.0));
         backArrowBasicTransition.play();
 
-        if(drawer.isOpened()) {
+        if (drawer.isOpened()) {
             drawer.close();
         } else {
             drawer.open();
         }
+    }
+
+    public void setPeer(Peer peer) {
+        this.peer = peer;
     }
 }

@@ -66,6 +66,7 @@ public class Controller {
                 fxmlLoader.getController();
         connectController.setPort(portField.getText());
         connectController.setNetworkLabels();
+        connectController.setPeer(peer);
 
         Stage stage = Main.getPrimaryStage();
         stage.setTitle(

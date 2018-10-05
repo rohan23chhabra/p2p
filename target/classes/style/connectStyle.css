@@ -7,6 +7,7 @@
 
 .pane {
     -fx-background-color: white;
+    -fx-background-image: url("../back6.jpeg");
 }
 
 .label {
@@ -17,4 +18,12 @@
 .jfx-text-field {
     -fx-font-weight: bold;
     -fx-font-family: Roboto;
+}
+
+.jfx-hamburger StackPane{
+    -fx-background-color: black;
+}
+
+.anchor-pane {
+    -fx-background-image: url("../back3.jpg");
 }

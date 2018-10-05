@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="415.0" prefWidth="715.0" styleClass="anchor-pane" stylesheets="@style/connectStyle.css"
-            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="ConnectController">
+<AnchorPane prefHeight="415.0" prefWidth="715.0" styleClass="anchor-pane" stylesheets="@style/connectStyle.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConnectController">
     <children>
-        <Pane styleClass="pane" layoutX="34.0" layoutY="37.0" prefHeight="334.0" prefWidth="641.0">
+        <Pane layoutX="34.0" layoutY="37.0" prefHeight="334.0" prefWidth="641.0" styleClass="pane">
             <children>
-                <JFXButton styleClass="button" fx:id="connectButton" buttonType="RAISED" layoutX="141.0" layoutY="150.0"
-                           onAction="#connectOnAction" ripplerFill="#6dab87" text="CONNECT"/>
-                <Label styleClass="label" layoutX="136.0" layoutY="51.0" text="Enter IP Address"/>
-                <Label styleClass="label" layoutX="136.0" layoutY="99.0" text="Enter port"/>
-                <JFXTextField fx:id="ipField" layoutX="364.0" layoutY="46.0"/>
-                <JFXTextField fx:id="portField" layoutX="364.0" layoutY="94.0"/>
-                <Label styleClass="label" layoutX="151.0" layoutY="249.0" text="Your port"/>
-                <Label styleClass="label" fx:id="thisPort" layoutX="424.0" layoutY="249.0" prefHeight="16.0"
-                       prefWidth="41.0"
-                       text="port"/>
-                <JFXButton buttonType="RAISED" layoutX="346.0" layoutY="150.0" mnemonicParsing="false"
-                           ripplerFill="#6dab87" styleClass="button" text="SHOW SHARED DIRECTORY"/>
+                <JFXButton fx:id="connectButton" buttonType="RAISED" layoutX="141.0" layoutY="150.0" onAction="#connectOnAction" ripplerFill="#6dab87" styleClass="button" text="CONNECT" />
+                <Label layoutX="136.0" layoutY="51.0" styleClass="label" text="Enter IP Address" />
+                <Label layoutX="136.0" layoutY="99.0" styleClass="label" text="Enter port" />
+                <JFXTextField fx:id="ipField" layoutX="364.0" layoutY="46.0" />
+                <JFXTextField fx:id="portField" layoutX="364.0" layoutY="94.0" />
+                <Label layoutX="151.0" layoutY="249.0" styleClass="label" text="Your port" />
+                <Label fx:id="thisPort" layoutX="424.0" layoutY="249.0" prefHeight="16.0" prefWidth="41.0" styleClass="label" text="port" />
+                <JFXButton buttonType="RAISED" layoutX="346.0" layoutY="150.0" mnemonicParsing="false" ripplerFill="#6dab87" styleClass="button" text="SHOW SHARED DIRECTORY" />
+            <JFXHamburger fx:id="hamburger" layoutX="557.0" onMouseClicked="#hamburgerOnAction" prefHeight="65.0" prefWidth="78.0" />
+            <JFXDrawer fx:id="drawer" defaultDrawerSize="190.0" layoutX="-1.0" prefHeight="334.0" prefWidth="179.0" />
             </children>
         </Pane>
     </children>

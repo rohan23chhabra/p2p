@@ -21,7 +21,7 @@
                 <Label fx:id="thisPort" layoutX="424.0" layoutY="249.0" prefHeight="16.0" prefWidth="41.0" styleClass="label" text="port" />
                 <JFXButton buttonType="RAISED" layoutX="346.0" layoutY="150.0" mnemonicParsing="false" ripplerFill="#6dab87" styleClass="button" text="SHOW SHARED DIRECTORY" />
             <JFXHamburger fx:id="hamburger" layoutX="557.0" onMouseClicked="#hamburgerOnAction" prefHeight="65.0" prefWidth="78.0" />
-            <JFXDrawer fx:id="drawer" layoutX="-1.0" prefHeight="334.0" prefWidth="161.0" />
+            <JFXDrawer fx:id="drawer" defaultDrawerSize="290.0" layoutX="-1.0" prefHeight="334.0" prefWidth="179.0" />
             </children>
         </Pane>
     </children>
