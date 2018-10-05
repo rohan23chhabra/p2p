@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" styleClass="anchor-pane" stylesheets="@style/mainStyle.css"
+            prefWidth="600.0" styleClass="anchor-pane" stylesheets="@style/initStyle.css"
             xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
     <children>
         <Pane layoutX="32.0" layoutY="32.0" prefHeight="328.0" prefWidth="539.0"

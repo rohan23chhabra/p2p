@@ -1,0 +1,20 @@
+.button {
+    -fx-background-color: darkblue;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-family: Roboto;
+}
+
+.pane {
+    -fx-background-color: white;
+}
+
+.label {
+    -fx-font-weight: bold;
+    -fx-font-family: Roboto;
+}
+
+.jfx-text-field {
+    -fx-font-weight: bold;
+    -fx-font-family: Roboto;
+}

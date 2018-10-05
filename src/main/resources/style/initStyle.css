@@ -2,6 +2,7 @@
     -fx-background-image: url("../back-button.png");
     -fx-font-weight: bold;
     -fx-text-fill: white;
+    -fx-font-family: Roboto;
 }
 
 .anchor-pane {
@@ -15,6 +16,7 @@
 
 .jfx-text-field {
     -fx-prompt-text-fill: #ffffff;
+    -fx-font-family: Roboto;
 }
 
 .jfx-password-field {
@@ -24,4 +26,5 @@
 .text-field {
     -fx-text-fill: white;
     -fx-font-weight: bold;
+    -fx-font-family: Roboto;
 }
