@@ -2,11 +2,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import file.FileUtils;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.input.MouseEvent;
 import net.Session;
 import ui.UIUtils;
 
@@ -33,6 +31,9 @@ public class ConnectController {
 
     public static final String FILE_DOWNLOAD_PATH =
             "/home/rohan/Desktop";
+
+    public static final String TITLE_REMOTE_SHARED_DIRECTORY =
+            "Files shared by remote user.";
 
     public void connectOnAction(ActionEvent actionEvent)
             throws IOException {
@@ -65,28 +66,25 @@ public class ConnectController {
                 .setRoot(FileUtils.getNodesForDirectory(directory));
         setTreeViewOnClickListener(fileTreeView);
         UIUtils.displayTreeView(fileTreeView,
-                "Files shared by remote " +
-                        "user.");
+                TITLE_REMOTE_SHARED_DIRECTORY);
     }
 
     private void setTreeViewOnClickListener(
             final TreeView<File> fileTreeView) {
         fileTreeView.setOnMouseClicked(
-                new EventHandler<MouseEvent>() {
-                    public void handle(MouseEvent event) {
-                        if (event.getClickCount() == 2) {
-                            TreeItem<File> selectedItem =
-                                    fileTreeView.getSelectionModel
-                                            ().getSelectedItem();
-                            File fileToDownload = selectedItem
-                                    .getValue();
-                            try {
-                                FileUtils.storeFileOnDisk
-                                        (fileToDownload,
-                                                FILE_DOWNLOAD_PATH);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                event -> {
+                    if (event.getClickCount() == 2) {
+                        TreeItem<File> selectedItem =
+                                fileTreeView.getSelectionModel
+                                        ().getSelectedItem();
+                        File fileToDownload = selectedItem
+                                .getValue();
+                        try {
+                            FileUtils.storeFileOnDisk
+                                    (fileToDownload,
+                                            FILE_DOWNLOAD_PATH);
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
                     }
                 });

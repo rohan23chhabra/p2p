@@ -1,8 +1,11 @@
 import core.SceneStack;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -10,14 +13,24 @@ public class Main extends Application {
     public static Stage primaryStage;
 
     @Override
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage) throws Exception {
         primaryStage = stage;
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader
+                .load(getClass().getResource("sample.fxml"));
         stage.setTitle("Hello World");
-        Scene primaryScene = new Scene(root, 700, 575);
+        Scene primaryScene = new Scene(root);
         stage.setScene(primaryScene);
         SceneStack.getScenes().push(primaryScene);
+        //adjustPaneSize(root);
         stage.show();
+    }
+
+    private void adjustPaneSize(Parent root) {
+        ObservableList<Node> observableList = root
+                .getChildrenUnmodifiable();
+        Pane pane = (Pane) observableList.get(0);
+        pane.setLayoutX(root.getLayoutX() / 2.0);
+        pane.setLayoutY(root.getLayoutY() / 2.0);
     }
 
     public static Stage getPrimaryStage() {

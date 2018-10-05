@@ -1,25 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXPasswordField?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.Label?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" styleClass="anchor-pane" stylesheets="@style/mainStyle.css"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
     <children>
-        <JFXButton fx:id="connectButton" buttonType="RAISED" layoutX="256.0" layoutY="331.0" onAction="#loginOnAction" prefHeight="29.0" prefWidth="77.0" ripplerFill="#5d25c6" style="-fx-background-color: #FFFFFF;" text="LOGIN" textAlignment="CENTER">
-            <font>
-                <Font name="Roboto Regular" size="13.0" />
-            </font>
-        </JFXButton>
-        <Label layoutX="80.0" layoutY="106.0" text="Enter port that you will use" />
-        <JFXTextField fx:id="portField" layoutX="307.0" layoutY="93.0" />
-        <Label layoutX="79.0" layoutY="157.0" prefHeight="16.0" prefWidth="180.0" text="Enter username" />
-        <JFXTextField fx:id="usernameField" layoutX="307.0" layoutY="142.0" />
-        <Label layoutX="77.0" layoutY="202.0" prefHeight="16.0" prefWidth="180.0" text="Enter password" />
-        <JFXPasswordField fx:id="passwordField" layoutX="306.0" layoutY="196.0" />
-      <JFXButton onAction="#chooseActionPerformed" fx:id="chooseButton" buttonType="RAISED" layoutX="183.0" layoutY="267.0" ripplerFill="#bf1d3b" style="-fx-background-color: #FFFFFF;" text="Choose directory to be shared" />
+        <Pane layoutX="32.0" layoutY="32.0" prefHeight="328.0" prefWidth="539.0"
+              styleClass="pane">
+            <children>
+                <JFXButton fx:id="connectButton" buttonType="RAISED" layoutX="193.0" layoutY="237.0"
+                           onAction="#loginOnAction" prefHeight="29.0" prefWidth="77.0" ripplerFill="#5d25c6"
+                           style="-fx-background-color: #2196f3;" text="Login" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Roboto Regular" size="13.0"/>
+                    </font>
+                </JFXButton>
+                <JFXTextField fx:id="portField" layoutX="151.0" layoutY="14.0" prefHeight="26.0" prefWidth="183.0"
+                              promptText="Port for your application" styleClass="text-field">
+                    <font>
+                        <Font name="Roboto Light Italic" size="13.0"/>
+                    </font>
+                </JFXTextField>
+                <JFXTextField fx:id="usernameField" layoutX="151.0" layoutY="63.0" prefHeight="26.0" prefWidth="183.0"
+                              promptText="Username" styleClass="text-field">
+                    <font>
+                        <Font name="Roboto Light Italic" size="13.0"/>
+                    </font>
+                </JFXTextField>
+                <JFXPasswordField fx:id="passwordField" layoutX="150.0" layoutY="117.0" prefHeight="26.0"
+                                  prefWidth="183.0" promptText="Password" styleClass="text-field">
+                    <font>
+                        <Font name="Roboto Light Italic" size="13.0"/>
+                    </font>
+                </JFXPasswordField>
+                <JFXButton fx:id="chooseButton" buttonType="RAISED" layoutX="147.0" layoutY="172.0"
+                           onAction="#chooseActionPerformed" ripplerFill="#bf1d3b"
+                           style="-fx-background-color: #33691e;" text="Choose directory to be shared" textFill="WHITE">
+                    <font>
+                        <Font name="Roboto Regular" size="13.0"/>
+                    </font>
+                </JFXButton>
+            </children>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </Pane>
     </children>
 </AnchorPane>

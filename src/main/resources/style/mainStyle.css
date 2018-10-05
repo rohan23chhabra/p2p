@@ -1,0 +1,27 @@
+.button {
+    -fx-background-image: url("../back-button.png");
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.anchor-pane {
+}
+
+.pane {
+    -fx-background-image: url("../login3.png");
+    -fx-background-color: #ffffff;
+    -fx-alignment: center;
+}
+
+.jfx-text-field {
+    -fx-prompt-text-fill: #ffffff;
+}
+
+.jfx-password-field {
+    -fx-prompt-text-fill: #ffffff;
+}
+
+.text-field {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
