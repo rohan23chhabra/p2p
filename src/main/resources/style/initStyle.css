@@ -1,5 +1,5 @@
 .button {
-    -fx-background-image: url("../back-button.png");
+    -fx-background-image: url("../images/back-button.png");
     -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-font-family: Roboto;
@@ -9,7 +9,7 @@
 }
 
 .pane {
-    -fx-background-image: url("../login3.png");
+    -fx-background-image: url("../images/login3.png");
     -fx-background-color: #ffffff;
     -fx-alignment: center;
 }

@@ -22,7 +22,6 @@
                 <JFXButton buttonType="RAISED" layoutX="314.0" layoutY="150.0" mnemonicParsing="false" ripplerFill="#6dab87" styleClass="button" text="SHOW REMOTE SHARED DIRECTORY" />
                 <JFXHamburger fx:id="hamburger" layoutX="557.0" onMouseClicked="#hamburgerOnAction" prefHeight="65.0" prefWidth="78.0" />
                 <JFXDrawer fx:id="drawer" defaultDrawerSize="290.0" layoutX="-1.0" prefHeight="334.0" prefWidth="179.0" />
-            <JFXHamburger fx:id="backButtonHamburger" layoutX="587.0" layoutY="280.0" onMouseClicked="#backButtonOnAction" prefHeight="54.0" prefWidth="54.0" />
             </children>
         </Pane>
     </children>

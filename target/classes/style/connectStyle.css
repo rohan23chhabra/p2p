@@ -7,7 +7,7 @@
 
 .pane {
     -fx-background-color: white;
-    -fx-background-image: url("../back6.jpeg");
+    -fx-background-image: url("../images/back6.jpeg");
 }
 
 .label {
@@ -25,5 +25,5 @@
 }
 
 .anchor-pane {
-    -fx-background-image: url("../back3.jpg");
+    -fx-background-image: url("../images/back3.jpg");
 }

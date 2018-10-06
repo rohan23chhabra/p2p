@@ -3,7 +3,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import core.Peer;
-import core.Scenes;
+import core.Parents;
 import file.FileUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -72,9 +72,9 @@ public class Controller {
         Stage stage = Main.getPrimaryStage();
         stage.setTitle(
                 "Connect to another peer - " + peer.getUsername());
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        Scenes.getScenes().push(scene);
+        Scene scene = stage.getScene();
+        scene.setRoot(root);
+        Parents.getRootStack().push(root);
         stage.show();
     }
 

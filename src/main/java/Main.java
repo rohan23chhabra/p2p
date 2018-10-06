@@ -1,4 +1,4 @@
-import core.Scenes;
+import core.Parents;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -10,18 +10,17 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public static Stage primaryStage;
+    private static Stage primaryStage;
 
     @Override
     public void start(Stage stage) throws Exception {
         primaryStage = stage;
         Parent root = FXMLLoader
                 .load(getClass().getResource("init.fxml"));
-        stage.setTitle("Hello World");
+        stage.setTitle("Welcome to P2P");
         Scene primaryScene = new Scene(root);
         stage.setScene(primaryScene);
-        Scenes.getScenes().push(primaryScene);
-        //adjustPaneSize(root);
+        Parents.getRootStack().push(root);
         stage.show();
     }
 
@@ -40,4 +39,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+
 }
