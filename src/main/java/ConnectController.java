@@ -29,6 +29,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ConnectController implements Initializable {
+
     public JFXButton connectButton;
     public JFXTextField ipField;
     public JFXTextField portField;
