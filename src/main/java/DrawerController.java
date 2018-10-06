@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import static ui.StyleConstants.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,22 +25,6 @@ public class DrawerController {
     public JFXButton logout;
 
     private Peer peer;
-
-    public static final String BUTTON_STYLE = "-fx-background-color" +
-            ": darkblue;\n" +
-            "    -fx-font-weight: bold;\n" +
-            "    -fx-text-fill: white;\n" +
-            "    -fx-font-family: Roboto;";
-
-    public static final String TEXTFIELD_STYLE = "-fx-font-weight: " +
-            "bold;\n" +
-            "    -fx-font-family: Roboto;\n" +
-            "    -fx-font-size: 15px;";
-
-    public static final String LABEL_STYLE = "-fx-font-weight: " +
-            "bold;\n" +
-            "    -fx-font-family: Roboto;\n" +
-            "    -fx-font-size: 15px;";
 
     public Peer getPeer() {
         return peer;
@@ -83,9 +68,10 @@ public class DrawerController {
 
         Main.getPrimaryStage().getScene().setRoot(stackPane);
 
-        JFXDialogLayout content = new JFXDialogLayout();
         Label heading = new Label("Enter new name");
         heading.setStyle(LABEL_STYLE);
+
+        JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(heading);
 
         JFXTextField input = new JFXTextField();

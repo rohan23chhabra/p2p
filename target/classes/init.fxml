@@ -12,27 +12,27 @@
     <children>
         <Pane layoutX="32.0" layoutY="32.0" prefHeight="387.0" prefWidth="661.0" styleClass="pane">
             <children>
-                <JFXButton fx:id="connectButton" buttonType="RAISED" layoutX="193.0" layoutY="237.0" onAction="#loginOnAction" prefHeight="29.0" prefWidth="77.0" ripplerFill="#5d25c6" style="-fx-background-color: #2196f3;" text="Login" textAlignment="CENTER" textFill="WHITE">
+                <JFXButton fx:id="connectButton" buttonType="RAISED" layoutX="262.0" layoutY="231.0" onAction="#loginOnAction" prefHeight="29.0" prefWidth="77.0" ripplerFill="#5d25c6" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="Roboto Regular" size="13.0" />
                     </font>
                 </JFXButton>
-                <JFXTextField fx:id="portField" layoutX="151.0" layoutY="14.0" prefHeight="26.0" prefWidth="183.0" promptText="Port for your application" styleClass="text-field">
+                <JFXTextField fx:id="portField" layoutX="210.0" layoutY="14.0" prefHeight="26.0" prefWidth="183.0" promptText="Port for your application" styleClass="text-field">
                     <font>
-                        <Font name="Roboto Light Italic" size="13.0" />
+                        <Font name="Roboto Light" size="13.0" />
                     </font>
                 </JFXTextField>
-                <JFXTextField fx:id="usernameField" layoutX="151.0" layoutY="63.0" prefHeight="26.0" prefWidth="183.0" promptText="Username" styleClass="text-field">
+                <JFXTextField fx:id="usernameField" layoutX="210.0" layoutY="63.0" prefHeight="26.0" prefWidth="183.0" promptText="Username" styleClass="text-field">
                     <font>
-                        <Font name="Roboto Light Italic" size="13.0" />
+                        <Font name="Roboto Light" size="13.0" />
                     </font>
                 </JFXTextField>
-                <JFXPasswordField fx:id="passwordField" layoutX="150.0" layoutY="117.0" prefHeight="26.0" prefWidth="183.0" promptText="Password" styleClass="text-field">
+                <JFXPasswordField fx:id="passwordField" layoutX="209.0" layoutY="117.0" prefHeight="26.0" prefWidth="183.0" promptText="Password" styleClass="text-field">
                     <font>
-                        <Font name="Roboto Light Italic" size="13.0" />
+                        <Font name="Roboto Light" size="13.0" />
                     </font>
                 </JFXPasswordField>
-                <JFXButton fx:id="chooseButton" buttonType="RAISED" layoutX="147.0" layoutY="172.0" onAction="#chooseActionPerformed" ripplerFill="#bf1d3b" style="-fx-background-color: #33691e;" text="Choose directory to be shared" textFill="WHITE">
+                <JFXButton fx:id="chooseButton" buttonType="RAISED" layoutX="235.0" layoutY="179.0" onAction="#chooseActionPerformed" ripplerFill="#bf1d3b" text="SHARE DIRECTORY" textFill="WHITE">
                     <font>
                         <Font name="Roboto Regular" size="13.0" />
                     </font>

@@ -9,9 +9,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import ui.UIUtils;
+import ui.DialogUtils;
+import ui.StyleConstants;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,10 +36,25 @@ public class Controller {
     public static final Logger LOGGER =
             Logger.getLogger(Controller.class.getName());
 
+    public static final String NULL_DIR_MESSAGE = "Please choose a " +
+            "directory to share.";
+
     private TreeView<File> fileTreeView = new TreeView<File>();
 
     public void loginOnAction(ActionEvent actionEvent)
             throws IOException {
+
+        if(sharedDirectory == null) {
+            Label label = new Label(NULL_DIR_MESSAGE);
+            label.setStyle(StyleConstants.LABEL_STYLE);
+            StackPane stackPane = FXMLLoader.load(getClass()
+                    .getResource("dialog.fxml"));
+            Main.getPrimaryStage().getScene().setRoot(stackPane);
+            DialogUtils.prepareAndShowDialog(DialogUtils.prepareContent(label)
+                    , stackPane);
+            return;
+        }
+
         int userPort = Integer.parseInt(portField.getText());
 
         String username = usernameField.getText();

@@ -1,30 +1,42 @@
-.button {
-    -fx-background-image: url("../images/back-button.png");
+.jfx-button {
     -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-font-family: Roboto;
+    -fx-background-color: darkblue;
 }
 
 .anchor-pane {
+    -fx-background-image: url("../images/back3.jpg");
 }
 
 .pane {
-    -fx-background-image: url("../images/login3.png");
     -fx-background-color: #ffffff;
     -fx-alignment: center;
+    -fx-background-image: url("../images/back6.jpeg");
 }
 
 .jfx-text-field {
-    -fx-prompt-text-fill: #ffffff;
+    -fx-prompt-text-fill: #000000;
     -fx-font-family: Roboto;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
 }
 
 .jfx-password-field {
-    -fx-prompt-text-fill: #ffffff;
+    -fx-prompt-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-font-family: Roboto;
 }
 
 .text-field {
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-font-weight: bold;
     -fx-font-family: Roboto;
+}
+
+.label {
+    -fx-font-weight: bold;
+    -fx-font-family: Roboto;
+    -fx-font-size: 15px;
 }
