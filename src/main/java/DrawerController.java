@@ -1,11 +1,16 @@
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXTextField;
 import core.Parents;
 import core.Peer;
 import file.FileUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -19,6 +24,22 @@ public class DrawerController {
     public JFXButton logout;
 
     private Peer peer;
+
+    public static final String BUTTON_STYLE = "-fx-background-color" +
+            ": darkblue;\n" +
+            "    -fx-font-weight: bold;\n" +
+            "    -fx-text-fill: white;\n" +
+            "    -fx-font-family: Roboto;";
+
+    public static final String TEXTFIELD_STYLE = "-fx-font-weight: " +
+            "bold;\n" +
+            "    -fx-font-family: Roboto;\n" +
+            "    -fx-font-size: 15px;";
+
+    public static final String LABEL_STYLE = "-fx-font-weight: " +
+            "bold;\n" +
+            "    -fx-font-family: Roboto;\n" +
+            "    -fx-font-size: 15px;";
 
     public Peer getPeer() {
         return peer;
@@ -55,7 +76,50 @@ public class DrawerController {
         }
     }
 
-    public void changeNameOnAction(ActionEvent actionEvent) {
+    public void changeNameOnAction(ActionEvent actionEvent)
+            throws IOException {
+        StackPane stackPane = FXMLLoader.load(getClass()
+                .getResource("dialog.fxml"));
 
+        Main.getPrimaryStage().getScene().setRoot(stackPane);
+
+        JFXDialogLayout content = new JFXDialogLayout();
+        Label heading = new Label("Enter new name");
+        heading.setStyle(LABEL_STYLE);
+        content.setHeading(heading);
+
+        JFXTextField input = new JFXTextField();
+        input.setStyle(TEXTFIELD_STYLE);
+
+        JFXButton okayButton = new JFXButton("Done");
+        JFXButton cancelButton = new JFXButton("Cancel");
+
+        okayButton.setStyle(BUTTON_STYLE);
+        cancelButton.setStyle(BUTTON_STYLE);
+
+
+        content.setActions(input, okayButton, cancelButton);
+
+        JFXDialog dialog =
+                new JFXDialog(stackPane, content,
+                        JFXDialog.DialogTransition.CENTER);
+
+        Parent root = Parents.getRootStack().peek();
+        okayButton.setOnAction(event -> {
+            JFXDialogLayout content1 =
+                    (JFXDialogLayout) dialog.getContent();
+            JFXTextField field =
+                    (JFXTextField) content1.getActions().get(0);
+            peer.setUsername(field.getText());
+            dialog.close();
+            Main.getPrimaryStage().getScene().setRoot(root);
+        });
+
+        cancelButton.setOnAction(event -> {
+            dialog.close();
+            Main.getPrimaryStage().getScene().setRoot(root);
+        });
+
+        dialog.show();
     }
 }
