@@ -75,4 +75,8 @@ public class Peer {
     public List<File> getRemoteDirectories() {
         return remoteDirectories;
     }
+
+    public int getPort() {
+        return port;
+    }
 }

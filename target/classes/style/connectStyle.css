@@ -13,11 +13,13 @@
 .label {
     -fx-font-weight: bold;
     -fx-font-family: Roboto;
+    -fx-font-size: 15px;
 }
 
 .jfx-text-field {
     -fx-font-weight: bold;
     -fx-font-family: Roboto;
+    -fx-font-size: 15px;
 }
 
 .jfx-hamburger StackPane{

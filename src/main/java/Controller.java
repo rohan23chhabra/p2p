@@ -68,6 +68,7 @@ public class Controller {
         connectController.setPort(portField.getText());
         connectController.setNetworkLabels();
         connectController.setPeer(peer);
+        connectController.initDrawerController();
 
         Stage stage = Main.getPrimaryStage();
         stage.setTitle(

@@ -30,9 +30,9 @@ public class Session {
 
     public void communicate(String message) throws IOException {
         dataOutputStream.writeUTF(message);
-        File directory = MyGson.fromJson(
-                dataInputStream.readUTF(), File.class);
-        this.otherSharedDirectory = directory;
+        this.otherSharedDirectory =
+                MyGson.fromJson(
+                        dataInputStream.readUTF(), File.class);
     }
 
     public File getOtherSharedDirectory() {

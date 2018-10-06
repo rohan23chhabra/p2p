@@ -38,6 +38,7 @@ public class ConnectController implements Initializable {
     public Label thisPort;
     public JFXHamburger hamburger;
     public JFXDrawer drawer;
+    public JFXButton sharedRemoteDirectories;
     private String port;
 
     private Peer peer;
@@ -69,6 +70,9 @@ public class ConnectController implements Initializable {
 
         Session session = new Session(clientSocket);
         session.communicate(CONNECTION_STRING);
+
+        peer.getRemoteDirectories().add(session
+                .getOtherSharedDirectory());
 
         displayOtherSharedDirectories(
                 session.getOtherSharedDirectory());
@@ -118,22 +122,6 @@ public class ConnectController implements Initializable {
         this.backArrowBasicTransition
                 = new HamburgerBackArrowBasicTransition(hamburger);
         backArrowBasicTransition.setRate(-1);
-
-        try {
-            FXMLLoader fxmlLoader =
-                    new FXMLLoader(getClass().getResource
-                            ("drawerContent.fxml"));
-            VBox vBox = fxmlLoader.load();
-            DrawerController drawerController = fxmlLoader
-                    .getController();
-            drawerController.setPeer(this.peer);
-            drawer.setSidePane(vBox);
-            drawer.close();
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void hamburgerOnAction(MouseEvent mouseEvent) {
@@ -156,5 +144,23 @@ public class ConnectController implements Initializable {
         Parents.getRootStack().pop();
         Main.getPrimaryStage().getScene().setRoot(Parents
                 .getRootStack().peek());
+    }
+
+    public void sharedRemoteDirectoriesOnAction(
+            ActionEvent actionEvent) {
+
+    }
+
+    public void initDrawerController() throws IOException {
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(getClass().getResource
+                        ("drawerContent.fxml"));
+        VBox vBox = fxmlLoader.load();
+        DrawerController drawerController = fxmlLoader
+                .getController();
+        drawerController.setPeer(this.peer);
+        drawer.setSidePane(vBox);
+        drawer.close();
+
     }
 }
