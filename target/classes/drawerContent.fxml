@@ -19,10 +19,12 @@
                    styleClass="button"
                    text="View Session"/>
         <JFXButton fx:id="sharedDirectory" buttonType="RAISED" mnemonicParsing="false" prefHeight="56.0"
+                   onAction="#sharedDirectoryOnAction"
                    prefWidth="179.0"
                    styleClass="button"
                    text="Show shared directory"/>
         <JFXButton fx:id="changeName" buttonType="RAISED" mnemonicParsing="false" prefHeight="56.0" prefWidth="179.0"
+                   onAction="#changeNameOnAction"
                    styleClass="button"
                    text="Change name"/>
         <JFXButton fx:id="logout" buttonType="RAISED" mnemonicParsing="false" prefHeight="56.0" prefWidth="179.0"

@@ -2,8 +2,10 @@ package file;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import ui.UIUtils;
 
 import java.io.*;
 import java.util.logging.Level;
@@ -65,5 +67,9 @@ public class FileUtils {
             inputStream.close();
             outputStream.close();
         }
+    }
+
+    public static void setFileDisplayLayout(TreeView<File> treeView) {
+        UIUtils.displayTreeView(treeView, "Shared files.");
     }
 }

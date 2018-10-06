@@ -88,13 +88,11 @@ public class Controller {
             this.sharedDirectory = dir;
             fileTreeView.setRoot(FileUtils.getNodesForDirectory(dir));
             //treeViewOnClickListener(fileTreeView);
-            setFileDisplayLayout();
+            FileUtils.setFileDisplayLayout(fileTreeView);
         }
     }
 
-    private void setFileDisplayLayout() {
-        UIUtils.displayTreeView(fileTreeView, "Shared files.");
-    }
+
 
 
 }

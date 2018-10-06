@@ -1,11 +1,14 @@
 import com.jfoenix.controls.JFXButton;
 import core.Parents;
 import core.Peer;
+import file.FileUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.TreeView;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class DrawerController {
@@ -35,6 +38,24 @@ public class DrawerController {
         ViewSessionController controller = fxmlLoader.getController();
         controller.setPeer(this.peer);
         stage.getScene().setRoot(root);
-        controller.setData();
+        controller.updateData();
+        controller.populateListView();
+    }
+
+    public void sharedDirectoryOnAction(ActionEvent actionEvent) {
+        TreeView<File> fileTreeView = new TreeView<File>();
+        File sharedDirectory = peer.getDirectory();
+        if (sharedDirectory == null ||
+                !sharedDirectory.isDirectory()) {
+            FileUtils.actionOnNullDirectory();
+        } else {
+            fileTreeView.setRoot(
+                    FileUtils.getNodesForDirectory(sharedDirectory));
+            FileUtils.setFileDisplayLayout(fileTreeView);
+        }
+    }
+
+    public void changeNameOnAction(ActionEvent actionEvent) {
+
     }
 }
