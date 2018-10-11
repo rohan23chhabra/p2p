@@ -14,4 +14,15 @@ The project uses JavaFX to achieve its purpose. This framework facilitates the i
 
 ## Screenshots
 
+![Change Name](./screenshots/change-name.png)
+
+![Connect](./screenshots/connect.png)
+
+![Drawer](./screenshots/drawer.png)
+
+![Home Page](./screenshots/home-page.png)
+
+![Shared files](./screenshots/shared-files.png)
+
+![View Session](./screenshots/view-session.png)
 
